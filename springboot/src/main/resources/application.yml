@@ -24,6 +24,6 @@ logging:
     org:
       springframework:
         security: DEBUG
-  file:
-    path: /var/logs/BookWarn.log
+#  file:
+#    path: /var/logs/BookWarn.log
 #    path: /var/logs
