@@ -1,4 +1,4 @@
-书籍对应项目文件夹：
+项目文件夹对应书籍：
 
 * effective：《Effective Java》
 * java8Combat：《Java8 实战》
