@@ -49,4 +49,21 @@ public final class PhoneNumber {
 		return hashCode;
 	}
 
+	public int compareTo(Object o) {
+		PhoneNumber pn = (PhoneNumber) o;
+		// 比较 areaCode
+		if (areaCode < pn.areaCode) {
+			return -1;
+		}
+		if (areaCode > pn.areaCode) {
+			return 1;
+		}
+		// areaCode 相等则比较 exchange
+		int exchangeDiff = exchange - pn.exchange;
+		if (exchangeDiff != 0) {
+			return exchangeDiff;
+		}
+		// areaCode 和 exchange 相等，比较 extension
+		return extension - pn.extension;
+	}
 }

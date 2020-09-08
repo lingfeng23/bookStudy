@@ -30,3 +30,4 @@
 #####改写 equals 时总是要改写 hashCode。
 #####总是要改写 toString
 #####谨慎地改写 clone
+#####考虑实现 Comparable 接口
