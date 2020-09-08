@@ -1,10 +1,10 @@
 server:
   port: 1234
   # 开启嵌入式服务器的HTTPS服务
-  ssl:
-    key-store: file:///path/to/mykeys.jks
-    key-store-password: password
-    key-password: password
+#  ssl:
+#    key-store: file:///path/to/mykeys.jks
+#    key-store-password: password
+#    key-password: password
 spring:
   main:
     # 禁用 ascii-art Banner
@@ -25,5 +25,5 @@ logging:
       springframework:
         security: DEBUG
   file:
-    BookWorm.log
-    path: /var/logs
+    path: /var/logs/BookWarn.log
+#    path: /var/logs
