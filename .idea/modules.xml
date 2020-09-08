@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/effectiveJava/effectiveJava.iml" filepath="$PROJECT_DIR$/effectiveJava/effectiveJava.iml" />
       <module fileurl="file://$PROJECT_DIR$/java8Combat/java8Combat.iml" filepath="$PROJECT_DIR$/java8Combat/java8Combat.iml" />
       <module fileurl="file://$PROJECT_DIR$/refactor/refactor.iml" filepath="$PROJECT_DIR$/refactor/refactor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot/springboot.iml" filepath="$PROJECT_DIR$/springboot/springboot.iml" />
     </modules>
   </component>
 </project>
