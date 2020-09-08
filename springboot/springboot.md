@@ -30,3 +30,26 @@ Spring Boot将很多魔法带入了Spring应用程序的开发之中，其中最
 |@ConditionalOnResource      |  Classpath里有指定的资源
 |@ConditionalOnWebApplication|  这是一个Web应用程序
 |@ConditionalOnNotWebApplication|   这不是一个Web应用程序
+
+Spring Boot能从多种属性源获得属性，包括如下几处。
+* (1) 命令行参数
+* (2)  java:comp/env 里的JNDI属性
+* (3) JVM系统属性
+* (4) 操作系统环境变量
+* (5) 随机生成的带 random.* 前缀的属性（在设置其他属性时，可以引用它们，比如 ${random.long} ）
+* (6) 应用程序以外的application.properties或者appliaction.yml文件
+* (7) 打包在应用程序内的application.properties或者appliaction.yml文件
+* (8) 通过 @PropertySource 标注的属性源
+* (9) 默认属性
+
+这个列表按照优先级排序，也就是说，任何在高优先级属性源里设置的属性都会覆盖低优先级的相同属性。例如，命令行参数会覆盖其他属性源里的属性。
+
+application.properties和application.yml文件能放在以下四个位置。
+* (1) 外置，在相对于应用程序运行目录的/config子目录里。
+* (2) 外置，在应用程序运行的目录里。
+* (3) 内置，在config包内。
+* (4) 内置，在Classpath根目录。
+
+同样，这个列表按照优先级排序。也就是说，/config子目录里的application.properties会覆盖应用程序Classpath里的application.properties中的相同属性。
+
+此外，如果你在同一优先级位置同时有application.properties和application.yml，那么application.yml里的属性会覆盖application.properties里的属性。
