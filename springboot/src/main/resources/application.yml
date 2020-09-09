@@ -5,6 +5,7 @@ server:
 #    key-store: file:///path/to/mykeys.jks
 #    key-store-password: password
 #    key-password: password
+
 spring:
   main:
     # 禁用 ascii-art Banner
@@ -12,18 +13,26 @@ spring:
   thymeleaf:
     # 禁用模板缓存
     cache: false
+  profiles:
+    active: development
+
   # 配置数据源
 #  datasource:
 #    url:
 #    username:
 #    password:
 #    driver-class-name: org.h2.Driver
-logging:
-  level:
-    root: WARN
-    org:
-      springframework:
-        security: DEBUG
+
+amazon:
+  assocaiteId: habuma-20
+
+  # 日志属性
+#logging:
+#  level:
+#    root: WARN
+#    org:
+#      springframework:
+#        security: DEBUG
+  # 日志文件位置
 #  file:
 #    path: /var/logs/BookWarn.log
-#    path: /var/logs

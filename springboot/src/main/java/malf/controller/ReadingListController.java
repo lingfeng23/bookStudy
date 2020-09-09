@@ -1,8 +1,10 @@
 package malf.controller;
 
+import malf.config.AmazonProperties;
 import malf.entity.Book;
 import malf.repository.ReadingListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +23,13 @@ import java.util.List;
 @RequestMapping("/")
 public class ReadingListController {
 	private ReadingListRepository readingListRepository;
+	private AmazonProperties amazonProperties;
 
 	@Autowired
-	public ReadingListController(ReadingListRepository readingListRepository) {
+	public ReadingListController(ReadingListRepository readingListRepository,
+								 AmazonProperties amazonProperties) {
 		this.readingListRepository = readingListRepository;
+		this.amazonProperties = amazonProperties;
 	}
 
 	@RequestMapping(value = "/{reader}", method = RequestMethod.GET)
@@ -32,6 +37,8 @@ public class ReadingListController {
 		List<Book> readingList = readingListRepository.findByReader(reader);
 		if (readingList != null) {
 			model.addAttribute("books", readingList);
+			model.addAttribute("reader", reader);
+			model.addAttribute("amazonID", amazonProperties.getAssociateId());
 		}
 		return "readingList";
 	}
