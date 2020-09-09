@@ -1,4 +1,4 @@
-package malf;
+package malf.chapter01;
 
 import java.util.Enumeration;
 import java.util.Vector;
@@ -34,7 +34,7 @@ public class Customer {
 		// 重构 -> getTotalFrequentRenterPoints()
 		// int frequentRenterPoints = 0;
 		Enumeration elements = rentals.elements();
-		String result = "malf.Rental Record for " + getName() + "\n";
+		String result = "malf.chapter01.Rental Record for " + getName() + "\n";
 		while (elements.hasMoreElements()) {
 			//double thisAmount = 0;
 			Rental each = (Rental) elements.nextElement();
@@ -44,16 +44,16 @@ public class Customer {
 
 			// 重构 -> amountFor(each)
 			/*switch (each.getMovie().getPriceCode()) {
-				case malf.Movie.REGULAR:
+				case malf.chapter01.Movie.REGULAR:
 					thisAmount += 2;
 					if (each.getDayRented() > 2) {
 						thisAmount += (each.getDayRented() - 2) * 1.5;
 					}
 					break;
-				case malf.Movie.NEW_RELEASE:
+				case malf.chapter01.Movie.NEW_RELEASE:
 					thisAmount += each.getDayRented() * 3;
 					break;
-				case malf.Movie.CHILDRENS:
+				case malf.chapter01.Movie.CHILDRENS:
 					thisAmount += 1.5;
 					if (each.getDayRented() > 3) {
 						thisAmount += (each.getDayRented() - 3) * 1.5;
@@ -102,16 +102,16 @@ public class Customer {
 		// 重构 -> getCharge()
 		*//*double result = 0;
 		switch (rental.getMovie().getPriceCode()) {
-			case malf.Movie.REGULAR:
+			case malf.chapter01.Movie.REGULAR:
 				result += 2;
 				if (rental.getDayRented() > 2) {
 					result += (rental.getDayRented() - 2) * 1.5;
 				}
 				break;
-			case malf.Movie.NEW_RELEASE:
+			case malf.chapter01.Movie.NEW_RELEASE:
 				result += rental.getDayRented() * 3;
 				break;
-			case malf.Movie.CHILDRENS:
+			case malf.chapter01.Movie.CHILDRENS:
 				result += 1.5;
 				if (rental.getDayRented() > 3) {
 					result += (rental.getDayRented() - 3) * 1.5;

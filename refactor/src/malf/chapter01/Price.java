@@ -1,4 +1,4 @@
-package malf;
+package malf.chapter01;
 
 import com.sun.org.apache.regexp.internal.RE;
 

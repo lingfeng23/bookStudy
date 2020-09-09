@@ -1,4 +1,4 @@
-package malf;
+package malf.chapter01;
 
 /**
  * @author malf
