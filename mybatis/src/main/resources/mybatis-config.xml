@@ -23,11 +23,13 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="malf/mapper/CountryMapper.xml"/>
+		<!--使用 package 代替一一引用-->
+		<package name="malf.mapper"/>
+		<!--<mapper resource="malf/mapper/CountryMapper.xml"/>
 		<mapper resource="malf/mapper/UserMapper.xml"/>
 		<mapper resource="malf/mapper/RoleMapper.xml"/>
 		<mapper resource="malf/mapper/PermissionMapper.xml"/>
 		<mapper resource="malf/mapper/UserRoleMapper.xml"/>
-		<mapper resource="malf/mapper/RolePermissionMapper.xml"/>
+		<mapper resource="malf/mapper/RolePermissionMapper.xml"/>-->
 	</mappers>
 </configuration>
