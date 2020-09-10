@@ -43,4 +43,26 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	<update id="updateById">
+		UPDATE sys_user
+		SET name = #{name},
+			password = #{password},
+			email = #{email},
+			info = #{info},
+			image = #{image, jdbcType=BLOB},
+			create_time = #{createTime, jdbcType=TIMESTAMP}
+		WHERE id = #{id}
+	</update>
+	<delete id="deleteById">
+		DELETE
+		FROM sys_user
+		WHERE id = #{id}
+	</delete>
+	<select id="selectRolesByUserIdAndRoleEnabled" resultType="malf.model.SysRole">
+		SELECT r.id, r.name, r.enabled, r.create_by, r.create_time
+		FROM sys_user u
+		INNER JOIN user_role ur on u.id = ur.userId
+		INNER JOIN sys_role r on ur.roleId = r.id
+		WHERE u.id = #{userId} AND r.enabled = #{enabled}
+	</select>
 </mapper>

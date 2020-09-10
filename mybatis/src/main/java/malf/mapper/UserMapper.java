@@ -2,6 +2,7 @@ package malf.mapper;
 
 import malf.model.SysRole;
 import malf.model.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -53,4 +54,27 @@ public interface UserMapper {
 	 */
 	int insertNew2(SysUser user);
 
+	/**
+	 * 根据主键更新
+	 * @param user
+	 * @return
+	 */
+	int updateById(SysUser user);
+
+	/**
+	 * 根据主键删除
+	 * @param id 用户ID
+	 * @return
+	 */
+	int deleteById(Long id);
+
+	/**
+	 * 根据用户ID 和角色标志获取用户角色
+	 * @param userId 用户ID
+	 * @param enabled 角色标志
+	 * @return
+	 */
+	List<SysRole> selectRolesByUserIdAndRoleEnabled(
+			@Param("userId") Long userId,
+			@Param("enabled") Integer enabled);
 }
