@@ -2,9 +2,45 @@
 <!DOCTYPE mapper
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="malf.mapper.CountryMapper">
-	<select id="selectAll" resultType="malf.model.Country">
-		SELECT id, countryname, countrycode
-		FROM country
+<mapper namespace="malf.mapper.UserMapper">
+	<resultMap id="userMap" type="malf.model.SysUser">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="info" column="info"/>
+		<result property="image" column="image" jdbcType="BLOB"/>
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+	</resultMap>
+	<select id="selectById" resultMap="userMap">
+		SELECT *
+		FROM sys_user
+		WHERE id = #{id}
 	</select>
+	<select id="selectAll" resultType="malf.model.SysUser">
+		SELECT *
+		FROM sys_user
+	</select>
+	<select id="selectRolesByUserId" resultType="malf.model.SysRole">
+		SELECT r.id, r.name, r.enabled, r.create_by createBy, r.create_time createTime
+		FROM sys_user u
+		INNER JOIN user_role ur on u.id = ur.userId
+		INNER JOIN sys_role r on ur.roleId = r.id
+		WHERE u.id = #{userId}
+	</select>
+	<insert id="insert">
+		INSERT INTO sys_user(id, name, password, email, info, image, create_time)
+		VALUES(#{id}, #{name}, #{password}, #{email}, #{info}, #{image, jdbcType=BLOB}, #{createTime, jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertNew" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO sys_user(name, password, email, info, image, create_time)
+		VALUES(#{name}, #{password}, #{email}, #{info}, #{image, jdbcType=BLOB}, #{createTime, jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertNew2">
+		INSERT INTO sys_user(name, password, email, info, image, create_time)
+		VALUES(#{name}, #{password}, #{email}, #{info}, #{image, jdbcType=BLOB}, #{createTime, jdbcType=TIMESTAMP})
+		<selectKey keyColumn="id" resultType="long" keyProperty="id" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
 </mapper>

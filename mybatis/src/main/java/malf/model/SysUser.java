@@ -21,7 +21,7 @@ public class SysUser {
 	/* 头像 */
 	private byte[] image;
 	/* 创建时间 */
-	private Date cerateTime;
+	private Date createTime;
 
 	public Long getId() {
 		return id;
@@ -71,11 +71,11 @@ public class SysUser {
 		this.image = image;
 	}
 
-	public Date getCerateTime() {
-		return cerateTime;
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setCerateTime(Date cerateTime) {
-		this.cerateTime = cerateTime;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 }
