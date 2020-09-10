@@ -24,5 +24,10 @@
 	</environments>
 	<mappers>
 		<mapper resource="malf/mapper/CountryMapper.xml"/>
+		<mapper resource="malf/mapper/UserMapper.xml"/>
+		<mapper resource="malf/mapper/RoleMapper.xml"/>
+		<mapper resource="malf/mapper/PermissionMapper.xml"/>
+		<mapper resource="malf/mapper/UserRoleMapper.xml"/>
+		<mapper resource="malf/mapper/RolePermissionMapper.xml"/>
 	</mappers>
 </configuration>
