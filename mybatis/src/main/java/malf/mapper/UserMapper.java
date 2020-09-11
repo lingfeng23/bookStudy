@@ -98,4 +98,18 @@ public interface UserMapper {
 	 * @return
 	 */
 	SysUser selectByIdOrName(SysUser user);
+
+	/**
+	 * 通过ID集合查询
+	 * @param ids
+	 * @return
+	 */
+	List<SysUser> selectByIdList(List<Long> ids);
+
+	/**
+	 * 批量插入
+	 * @param users
+	 * @return
+	 */
+	int insertList(List<SysUser> users);
 }
