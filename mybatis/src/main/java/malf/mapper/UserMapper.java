@@ -77,4 +77,25 @@ public interface UserMapper {
 	List<SysRole> selectRolesByUserIdAndRoleEnabled(
 			@Param("userId") Long userId,
 			@Param("enabled") Integer enabled);
+
+	/**
+	 * 动态条件查询用户信息
+	 * @param user
+	 * @return
+	 */
+	List<SysUser> selectByUser(SysUser user);
+
+	/**
+	 * 根据主键更新
+	 * @param user
+	 * @return
+	 */
+	int updateByIdSelective(SysUser user);
+
+	/**
+	 * 根据主键或姓名查询
+	 * @param user
+	 * @return
+	 */
+	SysUser selectByIdOrName(SysUser user);
 }

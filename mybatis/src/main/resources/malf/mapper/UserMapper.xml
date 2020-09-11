@@ -65,4 +65,48 @@
 		INNER JOIN sys_role r on ur.roleId = r.id
 		WHERE u.id = #{userId} AND r.enabled = #{enabled}
 	</select>
+	<select id="selectByUser" resultType="malf.model.SysUser">
+		SELECT id, name, password, email, info, image, create_time createTime
+		FROM sys_user
+		WHERE 1=1
+		<if test="name != null and name != ''">
+			AND name like concat('%', #{name}, '%')
+		</if>
+		<if test="email != null and email != ''">
+			AND email = #{email}
+		</if>
+	</select>
+	<update id="updateByIdSelective">
+		UPDATE sys_user
+		SET
+			<if test="name != null and name != ''">
+				name = #{name}
+			</if>
+			<if test="password != null and password != ''">
+				password = #{password}
+			</if>
+			<if test="email != null and email != ''">
+				email = #{email}
+			</if>
+			<if test="info != null and info != ''">
+				info = #{info}
+			</if>
+		WHERE id = #{id}
+	</update>
+	<select id="selectByIdOrName" resultType="malf.model.SysUser">
+		SELECT id, name, password, email, info
+		FROM sys_user
+		WHERE 1=1
+		<choose>
+			<when test="id != null">
+				AND id = #{id}
+			</when>
+			<when test="name != null and name != ''">
+				AND name = #{name}
+			</when>
+			<otherwise>
+				AND 1=2
+			</otherwise>
+		</choose>
+	</select>
 </mapper>

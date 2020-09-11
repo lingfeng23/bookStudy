@@ -155,4 +155,73 @@ public class UserMapperTest extends BaseMapperTest {
 			sqlSession.close();
 		}
 	}
+
+	@Test
+	public void testSelectByUser() {
+		SqlSession sqlSession = getSqlSession();
+		try {
+			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+			SysUser user = new SysUser();
+			// 只查询用户名
+			user.setName("张三");
+			List<SysUser> users = userMapper.selectByUser(user);
+			Assert.assertTrue(users.size() > 0);
+			// 只查询邮箱
+			user = new SysUser();
+			user.setEmail("123456@qq.com");
+			users = userMapper.selectByUser(user);
+			Assert.assertTrue(users.size() > 0);
+			// 查询用户名和邮箱
+			user = new SysUser();
+			user.setName("张三");
+			user.setEmail("15131257162@163.com");
+			users = userMapper.selectByUser(user);
+			Assert.assertTrue(users.size() > 0);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	@Test
+	public void testUpdateByIdSelective() {
+		SqlSession sqlSession = getSqlSession();
+		try {
+			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+			SysUser user = new SysUser();
+			user.setId(1L);
+			user.setEmail("opopop@op.com");
+			int result = userMapper.updateByIdSelective(user);
+			Assert.assertEquals(1, result);
+			user = userMapper.selectById(1L);
+			Assert.assertEquals("张三", user.getName());
+			Assert.assertEquals("opopop@op.com", user.getEmail());
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	@Test
+	public void testSelectByIdOrName() {
+		SqlSession sqlSession = getSqlSession();
+		try {
+			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+			SysUser user = new SysUser();
+			// ID和用户名
+			user.setId(1L);
+			user.setName("张三");
+			SysUser result = userMapper.selectByIdOrName(user);
+			Assert.assertNotNull(result);
+			// 没有ID
+			user.setId(null);
+			result = userMapper.selectByIdOrName(user);
+			Assert.assertNotNull(result);
+			// ID和用户名都为空
+			user.setName(null);
+			result = userMapper.selectByIdOrName(user);
+			Assert.assertNull(result);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
 }
