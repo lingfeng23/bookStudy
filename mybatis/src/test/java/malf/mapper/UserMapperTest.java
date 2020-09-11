@@ -6,9 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author malf
@@ -256,6 +254,24 @@ public class UserMapperTest extends BaseMapperTest {
 			}
 			int result = userMapper.insertList(users);
 			Assert.assertEquals(3, result);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	@Test
+	public void testUpdateByMap() {
+		SqlSession sqlSession = getSqlSession();
+		try {
+			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+			Map<String, Object> map = new HashMap<>();
+			map.put("id", 1L);
+			map.put("name", "张大三");
+			map.put("email", "qazwsx@qwe");
+			int result = userMapper.updateByMap(map);
+			Assert.assertEquals(1, result);
+			SysUser user = userMapper.selectById(1L);
+			Assert.assertEquals("张大三", user.getName());
 		} finally {
 			sqlSession.close();
 		}

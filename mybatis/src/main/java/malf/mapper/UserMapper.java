@@ -5,6 +5,7 @@ import malf.model.SysUser;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author malf
@@ -112,4 +113,11 @@ public interface UserMapper {
 	 * @return
 	 */
 	int insertList(List<SysUser> users);
+
+	/**
+	 * 通过Map 更新
+	 * @param map
+	 * @return
+	 */
+	int updateByMap(Map<String, Object> map);
 }

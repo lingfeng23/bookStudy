@@ -70,8 +70,13 @@
 		FROM sys_user
 		<where>
 			<if test="name != null and name != ''">
-				AND name like concat('%', #{name}, '%')
+				<bind name="nameLike" value="'%' + name + '%'"/>
+				AND name like #{nameLike}
 			</if>
+			<!--bind 和下面等同-->
+			<!--<if test="name != null and name != ''">
+				AND name like concat('%', #{name}, '%')
+			</if>-->
 			<if test="email != null and email != ''">
 				AND email = #{email}
 			</if>
@@ -131,4 +136,12 @@
 			)
 		</foreach>
 	</insert>
+	<update id="updateByMap">
+		UPDATE sys_user
+		SET
+		<foreach collection="_parameter" item="val" index="key" separator=",">
+			${key} = #{val}
+		</foreach>
+		WHERE id= #{id}
+	</update>
 </mapper>
