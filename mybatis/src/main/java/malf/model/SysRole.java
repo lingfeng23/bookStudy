@@ -15,7 +15,7 @@ public class SysRole {
 	/* 有效标志 */
 	private Integer enabled;
 	/* 创建人 */
-	private String createBy;
+	private Integer createBy;
 	/* 创建时间 */
 	private Date createTime;
 
@@ -43,11 +43,11 @@ public class SysRole {
 		this.enabled = enabled;
 	}
 
-	public String getCreateBy() {
+	public Integer getCreateBy() {
 		return createBy;
 	}
 
-	public void setCreateBy(String createBy) {
+	public void setCreateBy(Integer createBy) {
 		this.createBy = createBy;
 	}
 

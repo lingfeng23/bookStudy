@@ -5,6 +5,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Date;
+
 /**
  * @author malf
  * @createTime 2020/9/11
@@ -19,9 +21,26 @@ public class RoleMapperTest extends BaseMapperTest {
 			SysRole role = roleMapper.selectById(1L);
 			Assert.assertNotNull(role);
 			Assert.assertEquals("管理员", role.getName());
-			//List<Country> countries = sqlSession.selectList("malf.mapper.CountryMapper.selectAll");
 		} finally {
 			sqlSession.close();
 		}
 	}
+
+	@Test
+	public void testInsert() {
+		SqlSession sqlSession = getSqlSession();
+		try {
+			RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+			SysRole role = new SysRole();
+			role.setName("测试");
+			role.setCreateBy(1);
+			role.setCreateTime(new Date());
+			role.setEnabled(1);
+			int result = roleMapper.insert(role);
+			Assert.assertEquals(1, result);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
 }
