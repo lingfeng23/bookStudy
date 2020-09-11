@@ -1,6 +1,6 @@
 package malf.mapper;
 
-import malf.model.Permission;
+import malf.model.SysPermission;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ import java.util.List;
  * @since 2020/9/9
  */
 public interface PermissionMapper {
-	List<Permission> selectAll();
+	List<SysPermission> selectAll();
 }

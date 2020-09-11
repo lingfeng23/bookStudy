@@ -5,7 +5,7 @@ package malf.model;
  * @createTime 2020/9/10
  * @description 权限类
  */
-public class Permission {
+public class SysPermission {
 	/* 权限ID */
 	private Long id;
 	/* 权限名 */
