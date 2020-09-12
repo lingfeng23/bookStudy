@@ -26,6 +26,30 @@
 		<result property="role.enabled" column="enabled"/>
 	</resultMap>
 
+	<resultMap id="userRoleListMap" type="malf.model.SysUser">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="info" column="info"/>
+		<result property="image" column="image"/>
+		<result property="createTime" column="create_time"/>
+		<collection property="roles" columnPrefix="role_"
+					javaType="malf.model.SysRole">
+			<id property="id" column="id"/>
+			<result property="name" column="name"/>
+			<result property="enabled" column="enabled"/>
+			<result property="createBy" column="create_by"/>
+		</collection>
+	</resultMap>
+
+	<select id="selectAllUserAndRoles" resultMap="userRoleListMap">
+		SELECT u.id, u.name, u.password, u.email, u.info, u.image,
+			r.id rId, r.name roleName, r.enabled enabled, r.create_by createBy
+		FROM sys_user u
+		INNER JOIN user_role ur on u.id = ur.user_id
+		INNER JOIN sys_role r on ur.role_id = r.id
+	</select>
 	<select id="selectById" resultMap="userMap">
 		SELECT *
 		FROM sys_user
