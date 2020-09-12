@@ -12,6 +12,20 @@
 		<result property="image" column="image" jdbcType="BLOB"/>
 		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
 	</resultMap>
+	<resultMap id="userRoleMap" type="malf.model.SysUser">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="info" column="info"/>
+		<result property="image" column="image"/>
+		<result property="createTime" column="create_time"/>
+		<!--role相关-->
+		<result property="role.id" column="id"/>
+		<result property="role.name" column="name"/>
+		<result property="role.enabled" column="enabled"/>
+	</resultMap>
+
 	<select id="selectById" resultMap="userMap">
 		SELECT *
 		FROM sys_user
@@ -152,4 +166,5 @@
 		LEFT JOIN sys_role r on ur.role_Id = r.id
 		WHERE u.id = #{id}
 	</select>
+
 </mapper>

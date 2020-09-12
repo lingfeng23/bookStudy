@@ -1,10 +1,13 @@
 package malf.model;
 
+import lombok.Data;
+
 /**
  * @author malf
  * @createTime 2020/9/10
  * @description 权限类
  */
+@Data
 public class SysPermission {
 	/* 权限ID */
 	private Long id;
@@ -13,27 +16,4 @@ public class SysPermission {
 	/* 权限URL */
 	private String url;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
 }
