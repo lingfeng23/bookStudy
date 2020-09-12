@@ -144,4 +144,12 @@
 		</foreach>
 		WHERE id= #{id}
 	</update>
+	<select id="selectUserAndRoleById" resultType="malf.model.SysUser">
+		SELECT u.id, u.name userName, u.password, u.email, u.info,
+			r.id "role.id", r.name "role.name", r.enabled "role.enabled"
+		FROM sys_user u
+		LEFT JOIN user_role ur on u.id = ur.user_Id
+		LEFT JOIN sys_role r on ur.role_Id = r.id
+		WHERE u.id = #{id}
+	</select>
 </mapper>

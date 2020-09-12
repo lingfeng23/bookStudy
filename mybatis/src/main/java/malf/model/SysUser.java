@@ -23,6 +23,17 @@ public class SysUser {
 	/* 创建时间 */
 	private Date createTime;
 
+	/* 用户角色 */
+	SysRole role;
+
+	public SysRole getRole() {
+		return role;
+	}
+
+	public void setRole(SysRole role) {
+		this.role = role;
+	}
+
 	public Long getId() {
 		return id;
 	}

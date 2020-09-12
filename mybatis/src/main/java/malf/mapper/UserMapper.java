@@ -120,4 +120,11 @@ public interface UserMapper {
 	 * @return
 	 */
 	int updateByMap(Map<String, Object> map);
+
+	/**
+	 * 根据ID获取用户及角色信息
+	 * @param id
+	 * @return
+	 */
+	SysUser selectUserAndRoleById(Long id);
 }
