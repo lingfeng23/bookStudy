@@ -6,6 +6,7 @@ import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * @author malf
@@ -35,7 +36,7 @@ public class FileReaderTest extends TestCase {
 		}
 	}
 
-	public void testRead() throws Exception {
+	public void testRead() throws IOException {
 		char ch = '&';
 		for (int i = 0; i < 4; i++) {
 			ch = (char) input.read();
@@ -43,13 +44,23 @@ public class FileReaderTest extends TestCase {
 		assertEquals(48, 48);
 	}
 
-	public static Test suite() {
-		TestSuite suite = new TestSuite();
-		suite.addTest(new FileReaderTest("testRead"));
-		return suite;
+	public void testReadAtEnd() throws IOException {
+		int ch = -1234;
+		for (int i = 0; i < 141; i++) {
+			ch = input.read();
+		}
+		assertEquals(-1, input.read());
 	}
 
+	/*public static Test suite() {
+		TestSuite suite = new TestSuite();
+		suite.addTest(new FileReaderTest("testRead"));
+		suite.addTest(new FileReaderTest("testReadAtEnd"));
+		return suite;
+	}*/
+
 	public static void main(String[] args) {
-		TestRunner.run(suite());
+		TestRunner.run(new TestSuite(FileReaderTest.class));
+		//TestRunner.run(suite());
 	}
 }
