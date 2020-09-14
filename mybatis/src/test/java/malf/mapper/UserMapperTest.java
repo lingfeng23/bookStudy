@@ -300,11 +300,11 @@ public class UserMapperTest extends BaseMapperTest {
 			for (SysUser user: userList) {
 				System.out.println("用户名：" + user.getName());
 				// TODO 用户的角色未正常显示
-				/*if (user.getRoles() != null) {
+				if (user.getRoles() != null) {
 					for (SysRole role: user.getRoles()) {
 						System.out.println("角色名：" + role.getName());
 					}
-				}*/
+				}
 			}
 		} finally {
 			sqlSession.close();

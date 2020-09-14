@@ -3,6 +3,7 @@ package malf.model;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author malf
@@ -21,5 +22,7 @@ public class SysRole {
 	private Integer createBy;
 	/* 创建时间 */
 	private Date createTime;
+	/* 角色对应的权限表 */
+	List<SysPermission> permissionList;
 
 }

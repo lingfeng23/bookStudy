@@ -3,8 +3,8 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="malf.mapper.RoleMapper">
-	<!--<select id="selectAll" resultType="malf.model.Country">
-		SELECT id, countryname, countrycode
-		FROM country
-	</select>-->
+	<resultMap id="rolePermissionListMap" type="malf.model.SysRole">
+		<collection property="permissionList" columnPrefix="permission_"
+					resultMap="malf.mapper.PermissionMapper.permissionMap"/>
+	</resultMap>
 </mapper>
