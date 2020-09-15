@@ -1,5 +1,6 @@
 package malf.mapper;
 
+import malf.model.Enabled;
 import malf.model.SysRole;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
@@ -27,6 +28,17 @@ public class RoleMapperTest extends BaseMapperTest {
 	}
 
 	@Test
+	public void testUpdateById() {
+		SqlSession sqlSession = getSqlSession();
+		try {
+			RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+			SysRole role = roleMapper.selectById(1L);
+			Assert.assertEquals(Enabled.enabled, role.getEnabled());
+		} finally {
+			sqlSession.close();
+		}
+	}
+	@Test
 	public void testInsert() {
 		SqlSession sqlSession = getSqlSession();
 		try {
@@ -35,7 +47,7 @@ public class RoleMapperTest extends BaseMapperTest {
 			role.setName("测试");
 			role.setCreateBy(1);
 			role.setCreateTime(new Date());
-			role.setEnabled(1);
+			role.setEnabled(Enabled.enabled);
 			int result = roleMapper.insert(role);
 			Assert.assertEquals(1, result);
 		} finally {

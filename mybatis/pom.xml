@@ -56,6 +56,11 @@
 			<artifactId>lombok</artifactId>
 			<version>1.16.16</version><!--版本号自己选一个就行 -->
 		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-typehandlers-jsr310</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 		<!--<dependency>
 			<groupId>org.mybatis.generator</groupId>
 			<artifactId>mybatis-generator-core</artifactId>

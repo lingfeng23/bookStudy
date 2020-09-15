@@ -17,7 +17,8 @@ public class SysRole {
 	/* 角色名 */
 	private String name;
 	/* 有效标志 */
-	private Integer enabled;
+	//private Integer enabled;
+	private Enabled enabled;
 	/* 创建人 */
 	private Integer createBy;
 	/* 创建时间 */
