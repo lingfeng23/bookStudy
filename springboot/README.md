@@ -1,4 +1,4 @@
-####Spring Boot 精要
+#### Spring Boot 精要
 Spring Boot将很多魔法带入了Spring应用程序的开发之中，其中最重要的是以下四个核心。
 * 自动配置：针对很多Spring应用程序常见的应用功能，Spring Boot能自动提供相关配置。
 * 起步依赖：告诉Spring Boot需要什么功能，它就能引入需要的库。
@@ -15,7 +15,7 @@ Spring Boot将很多魔法带入了Spring应用程序的开发之中，其中最
 @Abracadabra，就是这一行配置开启了Spring Boot自动配置的魔力，让你不用再写成
 篇的配置了。
 
-#####自动配置中使用的条件化注解
+##### 自动配置中使用的条件化注解
 
 |条件化注解                   |   配置生效条件
 | :-----                     | :-----   
@@ -44,7 +44,7 @@ Spring Boot将很多魔法带入了Spring应用程序的开发之中，其中最
 
 这个列表按照优先级排序，也就是说，任何在高优先级属性源里设置的属性都会覆盖低优先级的相同属性。例如，命令行参数会覆盖其他属性源里的属性。
 
-#####application.properties和application.yml文件能放在以下四个位置。
+##### application.properties和application.yml文件能放在以下四个位置。
 * (1) 外置，在相对于应用程序运行目录的/config子目录里。
 * (2) 外置，在应用程序运行的目录里。
 * (3) 内置，在config包内。
@@ -54,7 +54,7 @@ Spring Boot将很多魔法带入了Spring应用程序的开发之中，其中最
 
 此外，如果你在同一优先级位置同时有application.properties和application.yml，那么application.yml里的属性会覆盖application.properties里的属性。
 
-#####默认情况下，Spring Boot会为错误视图提供如下错误属性。
+##### 默认情况下，Spring Boot会为错误视图提供如下错误属性。
 * timestamp ：错误发生的时间。
 * status ：HTTP状态码。
 * error ：错误原因。
