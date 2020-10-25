@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/mybatis/mybatis.iml" filepath="$PROJECT_DIR$/mybatis/mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/patternDesign/patternDesign.iml" filepath="$PROJECT_DIR$/patternDesign/patternDesign.iml" />
       <module fileurl="file://$PROJECT_DIR$/refactor/refactor.iml" filepath="$PROJECT_DIR$/refactor/refactor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot/springboot.iml" filepath="$PROJECT_DIR$/springboot/springboot.iml" />
     </modules>
   </component>
 </project>
