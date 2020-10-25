@@ -3,9 +3,9 @@
 |项目名|书名|备注|
 |----|----|----|
 |effective|《Effective Java》||
-|headFirstJava|《Head First Java》|pass|
+|...|《Head First Java》|pass|
 |java8Combat|《Java8 实战》||
 |mybatis|《MyBatis从入门到精通》|DONE|
 |patternDesign|《重学Java设计模式》|DONE|
 |refactor|《重构-改善既有代码的设计》||
-|springboot|《SpringBoot实战（第4版）》|pass|
+|...|《SpringBoot实战（第4版）》|pass|
