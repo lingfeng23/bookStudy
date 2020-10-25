@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="malf.mapper.DictMapper">
+	<select id="selectByKey" resultType="malf.model.Dict">
+		SELECT id, code, name, value
+		FROM dict
+		WHERE id = #{id}
+	</select>
+
+	<select id="selectByDict" resultType="malf.model.Dict">
+		SELECT id, code, name, value
+		FROM dict
+		<where>
+			<if test="id != null">
+				and id = #{id}
+			</if>
+			<if test="code != null and code !=''">
+				and code = #{code}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+		</where>
+		order by code, `value`
+	</select>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO dict(code, name, value)
+		VALUES (#(code), #(name), #(value))
+	</insert>
+	<update id="updateById">
+		UPDATE dict
+		SET code = #{code},
+			name = #{name},
+			value = #{value}
+		WHERE id = #{id}
+	</update>
+	<delete id="deleteById">
+		DELETE
+		FROM dict
+		WHERE id = #{id}
+	</delete>
+
+</mapper>

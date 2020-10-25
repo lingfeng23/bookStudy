@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/bookStudy.iml" filepath="$PROJECT_DIR$/.idea/bookStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/effectiveJava/effectiveJava.iml" filepath="$PROJECT_DIR$/effectiveJava/effectiveJava.iml" />
-      <module fileurl="file://$PROJECT_DIR$/headFirstJava/headFirstJava.iml" filepath="$PROJECT_DIR$/headFirstJava/headFirstJava.iml" />
       <module fileurl="file://$PROJECT_DIR$/java8Combat/java8Combat.iml" filepath="$PROJECT_DIR$/java8Combat/java8Combat.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis/mybatis.iml" filepath="$PROJECT_DIR$/mybatis/mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/patternDesign/patternDesign.iml" filepath="$PROJECT_DIR$/patternDesign/patternDesign.iml" />
