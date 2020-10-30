@@ -1,10 +1,21 @@
 ## ********************MidWay相关********************
 
+
+### 常用命令
+- npm run code // 执行自定义脚本，生成相关文件
+
 ### Sequelize
-- 升级数据库调试命令
-node --inspect-brk=32000  node_modules\sequelize-cli\lib\sequelize db:migrate
-- 调试地址：
-chrome://inspect/#devices
+- 初始化数据库表：
+	npx sequelize migration:generate --name=init-users
+- 执行 migrate 进行数据库变更
+	npx sequelize db:migrate
+	- 单独执行一个种子文件
+	npx sequelize db:seed --seed xxxxxx-yyy.js
+	- 升级数据库调试命令
+	node --inspect-brk=32000  node_modules\sequelize-cli\lib\sequelize db:migrate
+	- 调试地址：chrome://inspect/#devices
+	启动调试命令后打开地址，点击页面中 Remote Target 下面按钮进入调试页面
+	
 
 ### yarn命令使用
 - npm i yarn -g
@@ -90,8 +101,8 @@ chrome://inspect/#devices
 - 修改文件
 - 新建功能：功能名称 v1.0.1-xxx，基于 develop 新建分支 feature-xxx
 - 在 VSCode 中执行 
-	- git add .
-	- npm run commit，填写描述等
+	- git add . // 添加当前目录的所有文件到暂存区
+	- npm run commit，填写描述等 // 提交暂存区到仓库区
 		- Select the type of change that you're committing: feat:     A new feature
 		- What is the scope of this change (e.g. component or file name): (press enter to skip) add thumbnail name
 		- Write a short, imperative tense description of the change (max 74 chars):
@@ -100,7 +111,7 @@ chrome://inspect/#devices
 		 dbupdate
 		- Are there any breaking changes? No
 		- Does this change affect any open issues? No
-	- git push
+	- git push // 推送
 - sourceTree完成功能，合并到develop，删除分支
 - 点击推送
 
