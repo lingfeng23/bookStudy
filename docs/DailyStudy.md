@@ -1,3 +1,25 @@
+## ********************MidWay相关********************
+
+### Sequelize
+- 升级数据库调试命令
+node --inspect-brk=32000  node_modules\sequelize-cli\lib\sequelize db:migrate
+- 调试地址：
+chrome://inspect/#devices
+
+### yarn命令使用
+- npm i yarn -g
+	- -i：install 
+	- -g：全局安装（global）,使用 -g 或 --global
+- yarn -version  yarn版本号
+- 常用命令：
+	- yarn / yarn install 等同于npm install 批量安装依赖
+	- yarn add xxx 等同于 npm install xxx —save 安装指定包到指定位置
+	- yarn remove xxx 等同于 npm uninstall xxx —save 卸载指定包
+	- yarn add xxx —dev 等同于 npm install xxx —save-dev
+	- yarn upgrade 等同于 npm update 升级全部包
+	- yarn global add xxx 等同于 npm install xxx -g 全局安装指定包
+
+
 ## ********************Java相关********************
 
 ### Postman使用
@@ -12,6 +34,12 @@
 
 ### SprintgBoot项目启动时找不到或无法加载主类
 - 解决：在 idea 控制台输入 mvn clean install 命令
+
+### SpringBoot项目打成jar包设置开机自启动
+- 1、jar包放置在指定位置
+- 2、新建文件 xxx.bat 内容为jar包启动命令：java -jar E:\jar\xxx-1.0.0.1.jar（此时双击文件可以启动项目）
+- 3、开始 -> 运行 -> 输入 gpedit.msc 确定 -> 计算机配置 -> windows 设置 -> 脚本（启动/关机）
+	-> 双击启动 -> 添加，选择xxx.bat 应用。
 
 ## ********************数据库相关********************
 
@@ -100,6 +128,19 @@
   版本号为当前修正版本版本号
   tag: fix-版本号-[issues]-年月日时分
   
+
+## ********************操作系统相关********************
+### CentOS 操作相关
+- 修改文件的只读/读写属性（到文件目录下执行 ）
+	- chmod 666 xxx.txt(将文件属性改为读写)	
+	- chmod 644 xxx.txt(将文件属性改为只读)
+
+- 在Centos中创建文件
+	- touch xxxxxx【文件名】
+- 关闭防火墙
+	- 1. 关闭防火墙：sudo systemctl stop firewalld.service
+　　- 2. 关闭开机启动：sudo systemctl disable firewalld.service
+
 ## Docker相关
 
 ### Docker基本概念
