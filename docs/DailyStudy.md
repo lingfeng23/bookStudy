@@ -1,6 +1,9 @@
 
 ## ********************Java相关********************
 
+### Windows 下查看端口占用并杀掉该进程(TODO)
+- netstat -ano |findstr "端口号"
+
 ### Postman 使用
 
 #### 传递时间参数
@@ -88,8 +91,45 @@ where table_schema='test' AND table_name='hello';
 	insert into test_log(update_id,log_text) values(NEW.id,concat(cast(NEW.age as char),'修改为：',cast(OLD.age as char)));
 	end
 	```
+#### Mysql 添加用户并给用户赋予不同的权限
+- 本地访问用户：
+```
+create user 'front'@'localhost' identified by '123456';
+```
+- 允许外网 IP 访问
+```
+create user 'front'@'%' identified by '123456';
+```
+- 授予用户通过外网IP对于该数据库的全部权限
+```
+grant all privileges on `testdb`.* to 'front'@'%' identified by '123456';
+```
+- 授予用户在本地服务器对该数据库的全部权限
+```
+grant all privileges on `testdb`.* to 'front'@'localhost' identified by '123456';
+```
+- 授予该用户通过外网IP对该服务器上所有数据库的全部权限
+```
+grant all privileges on *.* to 'front'@'%' identified by '123456';
+```
+- 授予用户在本地服务器对该服务器上所有数据库的全部权限
+```
+grant all privileges on *.* to 'front'@'localhost' identified by '123456';
+```
+- 刷新权限
+```
+flush privileges;
+```
 
 ## ********************控制版本工具********************
+
+### git 本地仓库初始化并提交到远程仓库
+- git init
+- git add .
+- git commit -m "first commit"
+- git branch -M main
+- git remote add origin git@github.com:lingfeng23/foobar.git
+- git push -u origin main
 
 ### git 拉取远程仓库
 - git stash					// 备份当前的工作区的内容
