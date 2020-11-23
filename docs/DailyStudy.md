@@ -1,6 +1,13 @@
 
-## ********************Java相关********************
+## ***Java相关
 
+### 设置环境变量
+- JAVA_HOME: C:\Program Files\Java\jdk1.8.0_111
+- CLASSPATH: .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+- PATH
+    - %Java_Home%\bin
+    - %Java_Home%\jre\bin
+    
 ### Windows 下查看端口占用并杀掉该进程(TODO)
 - netstat -ano |findstr "端口号"
 
@@ -16,6 +23,8 @@ File –> settings –> Editor –> General -> Appearance –> 勾选 Show metho
 
 #### 单行显示多个 Tabs
 File –> settings –> Editor –> General -> Editor Tabs –> Show tabs in single row 去掉√
+
+#### 
 
 #### 同一 SpringBoot 项目，不同端口，允许同时运行
 Run 下拉框旁的 Edit configuration，勾选 Allow parallel run 
@@ -33,7 +42,7 @@ Run 下拉框旁的 Edit configuration，勾选 Allow parallel run
 - 修改 IDEA 中的 Maven 配置
 	- File -> Settings -> Maven -> 修改 Local repository 为本地仓库目录地址
 
-## ********************SprintBoot相关********************
+## ***SprintBoot相关
 
 ### SpringBoot 项目终端打包命令
 - mvn package clean -Dmaven.test.skip=true // 把之前打过的包通通干掉。
@@ -48,7 +57,7 @@ Run 下拉框旁的 Edit configuration，勾选 Allow parallel run
 - 3、开始 -> 运行 -> 输入 gpedit.msc 确定 -> 计算机配置 -> windows 设置 -> 脚本(启动/关机)
 	-> 双击启动 -> 添加，选择xxx.bat 应用。
 
-## ********************数据库相关********************
+## ***数据库相关
 
 ### sql命令
 
@@ -64,33 +73,7 @@ select concat(round(sum(DATA_LENGTH/1024/1024),2),'M') as table_size
 from information_schema.tables 
 where table_schema='test' AND table_name='hello';
 ```
-### 数据库相关问题
-	
-- 数据库连接时报错 Public Key Retrieval is not allowed.
-	- 解决方案：url增加 &allowPublicKeyRetrieval=true
-	
-- Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggre
-	- 原因：MySQL 5.7.5及以上功能依赖检测功能。如果启用了ONLY_FULL_GROUP_BY SQL模式(默认情况下)，
-		MySQL将拒绝选择列表
-	- 解决：select @@global.sql_mode，去掉ONLY_FULL_GROUP_BY，重新设置值。
-		- set @@global.sql_mode='NO_ENGINE_SUBSTITUTION';	// Mysql 服务重启后可能会变化？？？
-		
-- MySql的四种Blob类型
-	``` 
-	tinyblob(225B)
-	blob(65K)
-	mediunblob(16M)
-	longblob(4G)
-	```
-- Mysql增加触发器示例
-	```
-	create trigger tri_test_update
-	after update on test_update_trigger
-	for each row
-	begin
-	insert into test_log(update_id,log_text) values(NEW.id,concat(cast(NEW.age as char),'修改为：',cast(OLD.age as char)));
-	end
-	```
+
 #### Mysql 添加用户并给用户赋予不同的权限
 - 本地访问用户：
 ```
@@ -121,7 +104,77 @@ grant all privileges on *.* to 'front'@'localhost' identified by '123456';
 flush privileges;
 ```
 
-## ********************控制版本工具********************
+### 数据库相关问题
+	
+#### 数据库连接时报错 Public Key Retrieval is not allowed.
+- 解决方案：url增加 &allowPublicKeyRetrieval=true
+	
+#### Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggre
+- 原因：MySQL 5.7.5及以上功能依赖检测功能。如果启用了ONLY_FULL_GROUP_BY SQL模式(默认情况下)，
+    MySQL将拒绝选择列表
+- 解决：select @@global.sql_mode，去掉ONLY_FULL_GROUP_BY，重新设置值。
+    - set @@global.sql_mode='NO_ENGINE_SUBSTITUTION';	// Mysql 服务重启后可能会变化？？？
+		
+#### MySql的四种Blob类型
+``` 
+tinyblob(225B)
+blob(65K)
+mediunblob(16M)
+longblob(4G)
+```
+#### Mysql增加触发器示例
+```
+create trigger tri_test_update
+after update on test_update_trigger
+for each row
+begin
+insert into test_log(update_id,log_text) values(NEW.id,concat(cast(NEW.age as char),'修改为：',cast(OLD.age as char)));
+end
+```
+
+#### Mysql 开启并查看 binlog(Windows10中)
+- 查询 binlog 是否开启
+```
+show global variables like '%log_bin%';
+```
+- 修改 C:\ProgramData\MySQL\MySQL Server 5.7 下的 my.ini 文件如下
+```
+# Binary Logging.
+log-bin=mysql-bin
+binlog-format=Row
+```
+- 查看 binlog 日志(TODO)
+
+#### Mysql 开启 general_log(Windows10中)
+- 查询 general_log 是否开启
+```
+show global variables like '%general%';
+```
+- 修改 C:\ProgramData\MySQL\MySQL Server 5.7 下的 my.ini 文件如下
+```
+general-log=1
+```
+
+#### 数据库安全防范措施建议
+- 日志记录
+    - 在业务允许的条件下，尽可能的开启详尽的日志记录，以便在案发后溯源追踪。包括但不限于操作系统日志、审计日志、Web访问日志、数据库连接登录日志、数据操作日志等。
+- 数据备份
+    - 定时进行关键数据的备份存储，遇到勒索加密也能从容应对。
+- 密码强度
+    - 不要用弱口令，数字、字母大小写、特殊符号一起上，一个好的密码可以帮你抗住一大半的攻击可能。
+- 定期修改密码
+    - 就算用上了高强度密码，也不是一劳永逸，除了技术攻击，还有社会工程学，一个密码走遍天下风险极高，时不时修改密码也是非常有必要的。
+- 防火墙
+    - 防火墙的重要性就不必多说了，用好防火墙，将绝大多数攻击者拒之门外。
+- 专业的安全产品
+    - 对于企业和政府单位，还需要专业级的安全产品，比如全流量分析产品用于案件回溯，找到对方是怎么进来的，便于找出系统漏洞，及时修补。  
+
+### Navicat 激活步骤
+- 双击 Navicat Keygen Patch v5.6.0 DFoX,点击 Patch -> Cracked
+- 打开 Navicat，点击"注册"，回到 Patch 注册机，点击 Generate，将注册码填入 Navicat 点击"激活" 
+- 点击手动激活，将"请求码"复制到注册机中，点击左下角的 Generate，将生成的激活码粘贴到 Navicat 即可
+
+## ***控制版本工具
 
 ### git 本地仓库初始化并提交到远程仓库
 - git init
@@ -179,7 +232,7 @@ flush privileges;
   tag: fix-版本号-[issues]-年月日时分
   
 
-## ********************操作系统相关********************
+## ***操作系统相关
 ### Linux 操作相关
 
 #### 常用的 Linux 命令
@@ -396,7 +449,7 @@ service：启动、停止、重新启动和关闭系统服务，还可以显示�
 
 
 
-## ********************MidWay相关********************
+## ***MidWay相关
 
 ### 常用命令
 - npm run code // 执行自定义脚本，生成相关文件
