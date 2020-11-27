@@ -110,8 +110,7 @@ flush privileges;
 - 解决方案：url增加 &allowPublicKeyRetrieval=true
 	
 #### Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggre
-- 原因：MySQL 5.7.5及以上功能依赖检测功能。如果启用了ONLY_FULL_GROUP_BY SQL模式(默认情况下)，
-    MySQL将拒绝选择列表
+- 原因：MySQL 5.7.5及以上功能依赖检测功能。如果启用了ONLY_FULL_GROUP_BY SQL模式(默认情况下)，MySQL将拒绝选择列表
 - 解决：select @@global.sql_mode，去掉ONLY_FULL_GROUP_BY，重新设置值。
     - set @@global.sql_mode='NO_ENGINE_SUBSTITUTION';	// Mysql 服务重启后可能会变化？？？
 		
@@ -173,6 +172,27 @@ general-log=1
 - 双击 Navicat Keygen Patch v5.6.0 DFoX,点击 Patch -> Cracked
 - 打开 Navicat，点击"注册"，回到 Patch 注册机，点击 Generate，将注册码填入 Navicat 点击"激活" 
 - 点击手动激活，将"请求码"复制到注册机中，点击左下角的 Generate，将生成的激活码粘贴到 Navicat 即可
+
+## ***中间件工具
+
+### RabbitMQ
+- Erlang
+    - RabbitMQ 服务端代码是使用并发式语言 Erlang 编写的，安装 RabbitMQ 的前提是安装 Erlang
+    - https://www.erlang.org/downloads 下载 Erlang 并安装
+    - 配置 Erlang 环境变量
+    ```
+    C:\Program Files\erl7.1\bin
+    ```
+    - 终端输入 erl，显示版本号即为正确安装
+- RabbitMQ
+    - https://www.rabbitmq.com/download.html 下载 RabbitMQ 并安装
+    - RabbitMQ 安装好后接下来安装 RabbitMQ-Plugins。打开命令行cmd，输入 RabbitMQ 的 sbin 目录，输入如下命令
+    ```
+    rabbitmq-plugins enable rabbitmq_management
+    ```
+    - 在当前目录下执行`rabbitmqctl status`，显示状态信息即为正确安装
+- 双击 sbin 目录下的 rabbitmq-server.bat，访问http://localhost:15672，初始用户名密码分别为 guest、guest
+
 
 ## ***控制版本工具
 
